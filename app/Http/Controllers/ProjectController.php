@@ -13,7 +13,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        
+        $project = Project::all();
+        $header = [
+            "status" => 200,
+            "message" => "success",
+            "data" => $project
+        ];
+        return response()->json($header,200,["message" => "success"]);
     }
 
     /**
@@ -35,9 +41,16 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
+        $data = Project::find($id);
+        $headers = [
+            "status" => 200,
+            "message" => "Success",
+            "data"=>$data
+        ];
+
+       return response()->json($headers);
     }
 
     /**

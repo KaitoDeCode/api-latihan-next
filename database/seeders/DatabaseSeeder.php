@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Project;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Testing\Fakes\Fake;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+       for ($i=0; $i < 10 ; $i++) {     
+        Project::create([
+            "title" => fake()->realText(30),
+            "deskription" => fake()->realText(),
+            "url" => fake()->url(),
+            "thumbnail" => fake()->imageUrl()
+        ]);
+       }
     }
 }
